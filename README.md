@@ -9,9 +9,9 @@ brew install --cask fizzy718/tap/agentmicro
 ```
 
 The Cask tracks the current GitHub Release DMG and is updated automatically after
-new AgentMicro releases. It is also submitted to
-[Homebrew Cask](https://github.com/Homebrew/homebrew-cask); once accepted there,
-the shorter command will work:
+new AgentMicro releases. Once AgentMicro meets
+[Homebrew Cask's admission requirements](https://docs.brew.sh/Acceptable-Casks),
+it can be submitted upstream; after acceptance, the shorter command will work:
 
 ```sh
 brew install --cask agentmicro

@@ -28,4 +28,4 @@ jobs:
           HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}
         run: |
           brew tap fizzy718/tap "$GITHUB_WORKSPACE"
-          brew audit --new --cask fizzy718/tap/agentmicro
+          brew audit --cask fizzy718/tap/agentmicro
