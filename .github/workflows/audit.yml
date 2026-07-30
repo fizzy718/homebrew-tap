@@ -22,4 +22,6 @@ jobs:
           ruby Scripts/update-agentmicro-cask.rb --check
 
       - name: Audit Cask
-        run: brew audit --new --cask Casks/agentmicro.rb
+        run: |
+          brew tap fizzy718/tap "$GITHUB_WORKSPACE"
+          brew audit --new --cask fizzy718/tap/agentmicro
