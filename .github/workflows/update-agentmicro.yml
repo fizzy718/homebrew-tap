@@ -1,0 +1,39 @@
+name: Update AgentMicro Cask
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-agentmicro-cask
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - name: Update published release metadata
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: ruby Scripts/update-agentmicro-cask.rb
+
+      - name: Commit update
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- Casks/agentmicro.rb; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Casks/agentmicro.rb
+          version="$(ruby -ne 'puts $1 if /^  version "([^"]+)"$/' Casks/agentmicro.rb)"
+          git commit -m "agentmicro ${version}"
+          git push
