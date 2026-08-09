@@ -1,6 +1,6 @@
 cask "agentmicro" do
-  version "0.1.3"
-  sha256 "b232fab187e656bab87012c8863f31346a81fe2ec06f5b6fa6e78e8824f0b721"
+  version "0.1.4"
+  sha256 "baa02f8afe828c016a6c11ae46cd48b7130dbc6e596b691481a5a40bbfb36429"
 
   url "https://github.com/fizzy718/AgentMicro/releases/download/v#{version}/AgentMicro-macos-universal-#{version}.dmg"
   name "AgentMicro"
